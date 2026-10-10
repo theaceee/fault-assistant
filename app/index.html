@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f59e0b">
+  <title>Fault Assistant · ખરાબી સહાયક</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="logo">⚙</span>
+      <div>
+        <h1 id="t-title">Fault Assistant</h1>
+        <small id="t-sub">Offline troubleshooting</small>
+      </div>
+    </div>
+    <div class="right">
+      <span id="net" class="badge">●</span>
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="gu">ગુજ</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card input-card">
+      <label for="q" id="t-q-label">Describe the fault</label>
+      <div class="row">
+        <textarea id="q" rows="2" placeholder="e.g. motor is overheating / મોટર વધુ ગરમ થાય છે"></textarea>
+      </div>
+      <div class="row actions">
+        <button id="btn-search" class="primary">Find steps</button>
+        <button id="btn-voice" class="ghost" title="Voice">🎤</button>
+        <label class="ghost file-btn" title="Photo">
+          📷 <span id="t-photo">Photo</span>
+          <input id="photo" type="file" accept="image/*" capture="environment" hidden>
+        </label>
+      </div>
+      <div id="photo-wrap" hidden>
+        <img id="photo-preview" alt="Fault photo">
+        <p class="hint" id="t-photo-hint">Photo is stored only on this device. Type the fault code or panel message shown in the photo above to search.</p>
+      </div>
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <section id="results" aria-live="polite"></section>
+
+    <section class="card">
+      <h2 id="t-browse">All procedures</h2>
+      <ul id="list" class="list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <span id="t-footer">All data is stored on this device. No internet needed.</span>
+  </footer>
+
+  <script src="search.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
